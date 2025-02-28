@@ -4,13 +4,35 @@ const app = express()
 
 app.use(express.json())
 
-let todos = []
+let todos = [{
+            "title": "arsh",
+            "desc": "ugug",
+            "isChecked": false,
+            "id": 1
+        },{
+            "title": "fghf",
+            "desc": "asfas",
+            "isChecked": false,
+            "id": 2
+        },
+        {
+            "title": "ihoihio",
+            "desc": "khkugu",
+            "isChecked": false,
+            "id": 3
+        },
+        {
+            "title": "zfzxhg",
+            "desc": "jby",
+            "isChecked": false,
+            "id": 4
+        }]
 
 app.post("/todos", (req, res) => {
     try {
         // const {title, description} = req.body;
         // todos.push({title, description})
-        todos.push({...req.body, isChecked : false})
+        todos.push({...req.body, isChecked : false, id : todos.length + 1})
         return res.status(200).json({message : "Todo added successfully"})
     } catch (err) {
         return res.status(500).json({"message" : "please try again"})
@@ -24,6 +46,31 @@ app.get("/todos", (req, res) => {
         return res.status(500).json({"message" : "please try again"})
     }
 })
+
+app.delete("/todos/:id", (req, res) => {
+    try {
+        // console.log(req.params.id)
+        todos.splice(Number(req.params.id) - 1, 1)
+        return res.status(200).json({message : "Todo deleted successfully"})
+                
+                // OR
+
+        // const filteredTodo = todos.filter(todo => todo.id != req.params.id)
+        // return res.status(200).json({filteredTodo})
+    } catch (err) {
+        return res.status(500).json({"message" : "please try again"})
+    }
+})
+
+// app.delete("/todos/:id", (req, res) => {
+//     try {
+//         // console.log(req.params.id)
+//         todos.splice(Number(req.params.id) - 1, 1)
+//         return res.status(200).json({message : "Todo deleted successfully"})
+//     } catch (err) {
+//         return res.status(500).json({"message" : "please try again"})
+//     }
+// })
 
 app.get("/", (req, res) => {
     return res.status(200).json({
