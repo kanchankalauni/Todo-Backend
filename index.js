@@ -56,21 +56,26 @@ app.delete("/todos/:id", (req, res) => {
                 // OR
 
         // const filteredTodo = todos.filter(todo => todo.id != req.params.id)
+        // todos = [...filteredTodo]
         // return res.status(200).json({filteredTodo})
     } catch (err) {
         return res.status(500).json({"message" : "please try again"})
     }
 })
 
-// app.delete("/todos/:id", (req, res) => {
-//     try {
-//         // console.log(req.params.id)
-//         todos.splice(Number(req.params.id) - 1, 1)
-//         return res.status(200).json({message : "Todo deleted successfully"})
-//     } catch (err) {
-//         return res.status(500).json({"message" : "please try again"})
-//     }
-// })
+app.put("/todos/:id", (req, res) => {
+    try {
+
+        // 3 -> updated
+
+        const index = todos.findIndex(todo => todo.id == req.params.id)
+        todos[index] = {...todos[index] , ...req.body}
+
+        return res.status(200).json({"message" : "Todo updated successfully"})
+    } catch (err) {
+        return res.status(500).json({"message" : "please try again"})
+    }
+})
 
 app.get("/", (req, res) => {
     return res.status(200).json({
