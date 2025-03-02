@@ -32,6 +32,7 @@ app.post("/todos", (req, res) => {
     try {
         // const {title, description} = req.body;
         // todos.push({title, description})
+        console.log(req.body)
         todos.push({...req.body, isChecked : false, id : todos.length + 1})
         return res.status(200).json({message : "Todo added successfully"})
     } catch (err) {
