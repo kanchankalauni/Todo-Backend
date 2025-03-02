@@ -6,7 +6,6 @@ const app = express()
 app.use(express.json())
 
 let path = __dirname + "/todos.json"
-let todos = []
 
 app.post("/todos", (req, res) => {
     try {
