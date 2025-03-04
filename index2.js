@@ -20,3 +20,5 @@
 // }
 
 // addTodo()
+
+console.log("todo server")
