@@ -21,4 +21,4 @@
 
 // addTodo()
 
-console.log("updated todo server")
+console.log("todo server created")
