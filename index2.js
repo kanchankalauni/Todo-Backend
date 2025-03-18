@@ -22,4 +22,4 @@
 // addTodo()
 
 console.log("Todo server created updated")
-console.log("Todo server created")
+console.log("Todo deleted")

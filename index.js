@@ -21,7 +21,7 @@ app.post("/todos", (req, res) => {
                 if (err) {
                     return res.status(500).json({"message" : "please try again"})
                 }else{
-                    return res.status(200).json({message : "Todo added successfully"})
+                    return res.status(200).json({"message" : "Todo added successfully"})
                 }
             })
 
